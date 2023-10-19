@@ -1,0 +1,28 @@
+
+´python:S1192£"“Define a constant instead of duplicating this literal "Ğ—Ğ°Ğ³Ñ€ÑƒĞ·Ğ¸Ñ‚Ğµ Ğ´Ğ°Ğ½Ğ½Ñ‹Ğµ Ğ¿Ñ€ĞµĞ¶Ğ´Ğµ Ñ‡ĞµĞ¼ Ğ½Ğ°Ğ¶Ğ°Ñ‚ÑŒ Ğ½Ğ° ĞºĞ½Ğ¾Ğ¿ĞºÑƒ" 3 times.(†ôÚ8šîÃ­´1
+mpython:S1192£"MDefine a constant instead of duplicating this literal "ĞÑˆĞ¸Ğ±ĞºĞ°" 4 times.(†ôÚ8›îÃ­´1
+~python:S116õ"ZRename this field "code_FULLname_dict" to match the regular expression ^[_a-z][_a-z0-9]*$.( ‘µıøÿÿÿÿ8ø·Ô­´1
+{python:S116"WRename this field "doubleSpinBox_4" to match the regular expression ^[_a-z][_a-z0-9]*$.(´˜¬©üÿÿÿÿ8›îÃ­´1
+rpython:S116,"TRename this field "graphicsView" to match the regular expression ^[_a-z][_a-z0-9]*$.(ıÉ8›îÃ­´1
+{python:S116"WRename this field "doubleSpinBox_3" to match the regular expression ^[_a-z][_a-z0-9]*$.(ËäÕõùÿÿÿÿ8›îÃ­´1
+ppython:S116L"RRename this field "comboBox_3" to match the regular expression ^[_a-z][_a-z0-9]*$.(–øÊ 8›îÃ­´1
+{python:S116&"XRename this field "Load_data_button" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ù°Ûùÿÿÿÿ8›îÃ­´1
+upython:S116S"RRename this field "comboBox_4" to match the regular expression ^[_a-z][_a-z0-9]*$.(ôÙœûÿÿÿÿ8›îÃ­´1
+ypython:S116…"URename this field "doubleSpinBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÑÇ”Àûÿÿÿÿ8›îÃ­´1
+{python:S116‰"WRename this field "doubleSpinBox_2" to match the regular expression ^[_a-z][_a-z0-9]*$.(µ»°Òøÿÿÿÿ8›îÃ­´1
+upython:S116B"WRename this field "count_k_spinBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(‚©ğ8›îÃ­´1
+Špython:S101"gRename class "Ui_MainWindow" to match the regular expression ^_?([A-Z_][a-zA-Z0-9]*|[a-z_][a-z0-9_]*)$.( Ìñıùÿÿÿÿ8›îÃ­´1
+ypython:S117"VRename this parameter "MainWindow" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÂéÇ´ÿÿÿÿÿ8›îÃ­´1
+npython:S100"KRename method "setupUi" to match the regular expression ^[a-z_][a-z0-9_]*$.(ÂéÇ´ÿÿÿÿÿ8›îÃ­´1
+zpython:S117È"VRename this parameter "MainWindow" to match the regular expression ^[_a-z][a-z0-9_]*$.(”«Àşÿÿÿÿ8›îÃ­´1
+upython:S100È"QRename method "retranslateUi" to match the regular expression ^[a-z_][a-z0-9_]*$.(”«Àşÿÿÿÿ8›îÃ­´1
+Hpython:S108„")Either remove or fill this block of code.(ã‘Û¾8›îÃ­´1
+Hpython:S108¶")Either remove or fill this block of code.(ã‘Û¾8›îÃ­´1
+Hpython:S108Â")Either remove or fill this block of code.(ã‘Û¾8›îÃ­´1
+upython:S117ğ"VRename this local variable "new_X" to match the regular expression ^[_a-z][a-z0-9_]*$.(‹áÊ©8›îÃ­´1
+upython:S117‡"WRename this local variable "X_test" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÄÙ¸.8›îÃ­´1
+vpython:S117‡"XRename this local variable "X_train" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÄÙ¸.8›îÃ­´1
+Opython:S1481‡"0Replace unused local variable "X_test" with "_".(ÄÙ¸.8›îÃ­´1
+Opython:S1481‡"0Replace unused local variable "y_test" with "_".(ÄÙ¸.8›îÃ­´1
+upython:S117›"WRename this local variable "X_test" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÄÙ¸.8›îÃ­´1
+vpython:S117›"XRename this local variable "X_train" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÄÙ¸.8›îÃ­´1
