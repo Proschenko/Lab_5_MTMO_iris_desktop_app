@@ -285,7 +285,7 @@ class Ui_MainWindow(object):
 
 
         model = self.fit_our_model()
-        df_dop["Kind"]=model.predict(df_dop.values)
+        df_dop["Kind"]=model.predict(df_dop.values, 1)
         df_dop['Kind'] = df_dop['Kind'].astype(str).replace(self.code_FULLname_dict)
 
         self.clear_df_dop=df_dop
@@ -430,7 +430,7 @@ class Ui_MainWindow(object):
                 custom_knn = CustomKNN(key)
                 custom_knn.fit(X_train, y_train)
 
-                y_pred = custom_knn.predict(X_test)
+                y_pred = custom_knn.predict(X_test, 1)
                 count = 0
                 for i in range(len(y_pred)):
                     if y_pred[i] == y_test[i]:
