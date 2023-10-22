@@ -67,7 +67,7 @@ class Ui_MainWindow(object):
         self.count_k_spinBox.setGeometry(QtCore.QRect(780, 50, 151, 41))
         self.count_k_spinBox.setAlignment(QtCore.Qt.AlignCenter)
         self.count_k_spinBox.setMinimum(1)
-        self.count_k_spinBox.setMaximum(49)
+        self.count_k_spinBox.setMaximum(149)
         self.count_k_spinBox.setObjectName("count_k_spinBox")
         self.label_4 = QtWidgets.QLabel(self.centralwidget)
         self.label_4.setGeometry(QtCore.QRect(780, 20, 151, 31))
@@ -128,7 +128,7 @@ class Ui_MainWindow(object):
         self.label_12.setGeometry(QtCore.QRect(294, 95, 61, 21))
         self.label_12.setObjectName("label_12")
         self.predict_button = QtWidgets.QPushButton(self.centralwidget)
-        self.predict_button.setGeometry(QtCore.QRect(260, 130, 93, 28))
+        self.predict_button.setGeometry(QtCore.QRect(260, 120, 93, 28))
         self.predict_button.setObjectName("predict_button")
         self.doubleSpinBox = QtWidgets.QDoubleSpinBox(self.centralwidget)
         self.doubleSpinBox.setGeometry(QtCore.QRect(100, 50, 171, 31))
@@ -148,6 +148,15 @@ class Ui_MainWindow(object):
         self.label_5.setGeometry(QtCore.QRect(30, 19, 531, 31))
         self.label_5.setAlignment(QtCore.Qt.AlignCenter)
         self.label_5.setObjectName("label_5")
+        self.spinBox = QtWidgets.QSpinBox(self.centralwidget)
+        self.spinBox.setGeometry(QtCore.QRect(1020, 120, 42, 22))
+        self.spinBox.setMinimum(1)
+        self.spinBox.setMaximum(4)
+        self.spinBox.setObjectName("spinBox")
+        self.label_13 = QtWidgets.QLabel(self.centralwidget)
+        self.label_13.setGeometry(QtCore.QRect(960, 90, 161, 20))
+        self.label_13.setAlignment(QtCore.Qt.AlignCenter)
+        self.label_13.setObjectName("label_13")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1144, 26))
@@ -156,6 +165,8 @@ class Ui_MainWindow(object):
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
+
+
         # endregion
 
         # region parameters
@@ -240,6 +251,7 @@ class Ui_MainWindow(object):
         self.label_12.setText(_translate("MainWindow", "Petal.W"))
         self.predict_button.setText(_translate("MainWindow", "Предсказать"))
         self.label_5.setText(_translate("MainWindow", "Введите данные ириса"))
+        self.label_13.setText(_translate("MainWindow", "Сколько признаков учесть:"))
 
     code_name_dict = {'0': "Setosa", '1': "Versicolor", '2': "Virginica"}
     code_FULLname_dict = {'0': "Iris-Setosa", '1': "Iris-Versicolor", '2': "Iris-Virginica"}
@@ -401,7 +413,7 @@ class Ui_MainWindow(object):
         if self.clear_df_iris.empty:
             self.show_popup_critical("Ошибка", "Загрузите данные прежде чем нажать на кнопку")
         else:
-            X = self.mod_df_iris.iloc[:, :1].copy()
+            X = self.mod_df_iris.iloc[:, :4].copy()
             y = self.mod_df_iris.iloc[:, 5].to_frame().copy()
 
             X = np.array(X)
