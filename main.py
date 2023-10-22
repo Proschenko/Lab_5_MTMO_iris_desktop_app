@@ -770,6 +770,18 @@ class Ui_MainWindow(object):
         # Получение объекта Axes
         ax =self.matplotlib_canvas.fig.add_subplot(111)
 
+        title_text = "График зависимости на основе метрики: "
+        choice_metric_param = self.metric_combobox.currentIndex() + 1
+        if choice_metric_param == 1:
+            title_text += "Евклидова"
+        elif choice_metric_param == 2:
+            title_text += "Хемминга"
+        elif choice_metric_param == 3:
+            title_text += "Чебышева"
+        elif choice_metric_param == 4:
+            title_text += "Косинусная"
+
+        ax.set_title(title_text)
         # Построение графика
         ax.plot(k_history_inner, accuracy_history)
 
