@@ -6,6 +6,7 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 
+
 class CustomKNN:
     def __init__(self, k=3):
         self.k = k
@@ -79,32 +80,3 @@ class CustomKNN:
 
         most_common = np.bincount(k_nearest_labels).argmax()
         return most_common
-
-
-# model1 = LogisticRegression()
-# model2 = DecisionTreeClassifier()
-# model3 = RandomForestClassifier()
-# model4 = SVC(probability=True)
-# model5 = GaussianNB()
-#
-# # Задаем веса для каждой модели
-# weights = [1, 2, 3, 1, 2]  # Здесь модель 2 и 5 имеют вес 2, а модель 3 - вес 3, остальные имеют вес 1
-#
-# voting_classifier = VotingClassifier(estimators=[
-#     ('model1', model1),
-#     ('model2', model2),
-#     ('model3', model3),
-#     ('model4', model4),
-#     ('model5', model5)
-# ], voting='soft', weights=weights)
-#
-# voting_classifier.fit(X_train, y_train)
-#
-# y_pred = voting_classifier.predict(X_test)
-
-# scaler = StandardScaler()
-# scaler.fit(X)
-#
-# if False:
-#     X = scaler.transform(X)
-# weights = np.array([0.1, 0.2, 0.3, 0.4])
