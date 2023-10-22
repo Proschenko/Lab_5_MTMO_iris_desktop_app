@@ -1,52 +1,55 @@
-import math
 import numpy as np
-
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import VotingClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.naive_bayes import GaussianNB
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
 
 class CustomKNN:
     def __init__(self, k=3):
         self.k = k
 
-    def fit(self, X, y):
+    def fit(self, X, y, weights):
         self.X_train = X
         self.y_train = y
+        self.weights = weights
 
-    @staticmethod
-    def euclidean_distance(x1, x2):
-        return np.sqrt(np.sum((x1 - x2) ** 2))
+    def euclidean_distance(self, x1, x2):
+        return np.sqrt(np.sum(((x1 - x2) * self.weights) ** 2))
 
-    @staticmethod
-    def hamming_distance(str1, str2):
-        if len(str1) != len(str2):
-            raise ValueError("Строки должны быть одинаковой длины")
+    def manhattan_distance(self, point1, point2):
+        if len(point1) != len(point2) or len(point1) != len(self.weights):
+            raise ValueError("Точки и веса должны быть одинаковой размерности")
 
         distance = 0
-        for bit1, bit2 in zip(str1, str2):
-            if bit1 != bit2:
-                distance += 1
+        for coord1, coord2, weight in zip(point1, point2, self.weights):
+            distance += abs(coord1 - coord2) * weight
 
         return distance
 
-    @staticmethod
-    def chebyshev_distance(point1, point2):
+    def chebyshev_distance(self, point1, point2):
         if len(point1) != len(point2):
             raise ValueError("Точки должны быть одинаковой размерности")
 
         max_difference = 0
-        for coord1, coord2 in zip(point1, point2):
-            difference = abs(coord1 - coord2)
+        for coord1, coord2, weight in zip(point1, point2, self.weights):
+            difference = abs(coord1 - coord2) * weight
             if difference > max_difference:
                 max_difference = difference
 
         return max_difference
 
-    @staticmethod
-    def cosine_distance(vector1, vector2):
+    def cosine_distance(self, vector1, vector2):
         if len(vector1) != len(vector2):
             raise ValueError("Векторы должны быть одинаковой длины")
 
-        dot_product = sum(coord1 * coord2 for coord1, coord2 in zip(vector1, vector2))
-        magnitude1 = math.sqrt(sum(coord ** 2 for coord in vector1))
-        magnitude2 = math.sqrt(sum(coord ** 2 for coord in vector2))
+        weighted_vector1 = vector1 * self.weights
+        weighted_vector2 = vector2 * self.weights
+
+        dot_product = np.sum(weighted_vector1 * weighted_vector2)
+        magnitude1 = np.sqrt(np.sum(weighted_vector1 ** 2))
+        magnitude2 = np.sqrt(np.sum(weighted_vector2 ** 2))
 
         if magnitude1 == 0 or magnitude2 == 0:
             return 1  # Избегаем деления на ноль
@@ -62,7 +65,7 @@ class CustomKNN:
             case 1:
                 distances = [self.euclidean_distance(x, x_train) for x_train in self.X_train]
             case 2:
-                distances = [self.hamming_distance(x, x_train) for x_train in self.X_train]
+                distances = [self.manhattan_distance(x, x_train) for x_train in self.X_train]
             case 3:
                 distances = [self.chebyshev_distance(x, x_train) for x_train in self.X_train]
             case 4:
@@ -76,3 +79,32 @@ class CustomKNN:
 
         most_common = np.bincount(k_nearest_labels).argmax()
         return most_common
+
+
+# model1 = LogisticRegression()
+# model2 = DecisionTreeClassifier()
+# model3 = RandomForestClassifier()
+# model4 = SVC(probability=True)
+# model5 = GaussianNB()
+#
+# # Задаем веса для каждой модели
+# weights = [1, 2, 3, 1, 2]  # Здесь модель 2 и 5 имеют вес 2, а модель 3 - вес 3, остальные имеют вес 1
+#
+# voting_classifier = VotingClassifier(estimators=[
+#     ('model1', model1),
+#     ('model2', model2),
+#     ('model3', model3),
+#     ('model4', model4),
+#     ('model5', model5)
+# ], voting='soft', weights=weights)
+#
+# voting_classifier.fit(X_train, y_train)
+#
+# y_pred = voting_classifier.predict(X_test)
+
+# scaler = StandardScaler()
+# scaler.fit(X)
+#
+# if False:
+#     X = scaler.transform(X)
+# weights = np.array([0.1, 0.2, 0.3, 0.4])
