@@ -2,30 +2,30 @@
 ´python:S1192¿"“Define a constant instead of duplicating this literal "Ð—Ð°Ð³Ñ€ÑƒÐ·Ð¸Ñ‚Ðµ Ð´Ð°Ð½Ð½Ñ‹Ðµ Ð¿Ñ€ÐµÐ¶Ð´Ðµ Ñ‡ÐµÐ¼ Ð½Ð°Ð¶Ð°Ñ‚ÑŒ Ð½Ð° ÐºÐ½Ð¾Ð¿ÐºÑƒ" 3 times.(†ôÚ8­Ð·Þµ1
 mpython:S1192¿"MDefine a constant instead of duplicating this literal "ÐžÑˆÐ¸Ð±ÐºÐ°" 5 times.(†ôÚ8­Ð·Þµ1
 ~python:S116ä"ZRename this field "code_FULLname_dict" to match the regular expression ^[_a-z][_a-z0-9]*$.( ‘µýøÿÿÿÿ8­Ð·Þµ1
-{python:S116/"XRename this field "Load_data_button" to match the regular expression ^[_a-z][_a-z0-9]*$.(ŽÙ°Ûùÿÿÿÿ8®Ð·Þµ1
-vpython:S116¤"RRename this field "checkBox_5" to match the regular expression ^[_a-z][_a-z0-9]*$.(³Ð¹°ÿÿÿÿÿ8®Ð·Þµ1
-{python:S116‘"WRename this field "doubleSpinBox_2" to match the regular expression ^[_a-z][_a-z0-9]*$.(µ»°Òøÿÿÿÿ8®Ð·Þµ1
-~python:S116¥"ZRename this field "horizontalSlider_9" to match the regular expression ^[_a-z][_a-z0-9]*$.(ï‚­Ïÿÿÿÿÿ8®Ð·Þµ1
-ypython:S116§"URename this field "checkBox_norm" to match the regular expression ^[_a-z][_a-z0-9]*$.(Æí²Îÿÿÿÿÿ8®Ð·Þµ1
-upython:S116J"WRename this field "count_k_spinBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(‚©ð8®Ð·Þµ1
-{python:S116•"WRename this field "doubleSpinBox_3" to match the regular expression ^[_a-z][_a-z0-9]*$.(ËäÕõùÿÿÿÿ8®Ð·Þµ1
-vpython:S116®"RRename this field "checkBox_3" to match the regular expression ^[_a-z][_a-z0-9]*$.(æÖ´ëþÿÿÿÿ8¯Ð·Þµ1
-ypython:S116Ì"ZRename this field "horizontalSlider_3" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ð¶‡¸8¯Ð·Þµ1
-ypython:S116Ö"ZRename this field "horizontalSlider_4" to match the regular expression ^[_a-z][_a-z0-9]*$.(Òº¼Ó8®Ð·Þµ1
-~python:S116ê"ZRename this field "horizontalSlider_6" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÔÞìÉþÿÿÿÿ8®Ð·Þµ1
-{python:S116˜"WRename this field "doubleSpinBox_4" to match the regular expression ^[_a-z][_a-z0-9]*$.(´˜¬©üÿÿÿÿ8®Ð·Þµ1
-ppython:S116T"RRename this field "comboBox_3" to match the regular expression ^[_a-z][_a-z0-9]*$.(–øÊ 8®Ð·Þµ1
-~python:S116à"ZRename this field "horizontalSlider_5" to match the regular expression ^[_a-z][_a-z0-9]*$.(úôö˜ùÿÿÿÿ8­Ð·Þµ1
-~python:S116˜"ZRename this field "horizontalSlider_8" to match the regular expression ^[_a-z][_a-z0-9]*$.(ðâæÜÿÿÿÿÿ8­Ð·Þµ1
-~python:S116‹"ZRename this field "horizontalSlider_7" to match the regular expression ^[_a-z][_a-z0-9]*$.(ôŸÏ’þÿÿÿÿ8®Ð·Þµ1
-rpython:S1165"TRename this field "graphicsView" to match the regular expression ^[_a-z][_a-z0-9]*$.(ýÉ8®Ð·Þµ1
-|python:S116¸"XRename this field "horizontalSlider" to match the regular expression ^[_a-z][_a-z0-9]*$.(öÄ¶ƒÿÿÿÿÿ8¯Ð·Þµ1
 vpython:S116Ÿ"RRename this field "checkBox_1" to match the regular expression ^[_a-z][_a-z0-9]*$.(ãÒÊ”ýÿÿÿÿ8®Ð·Þµ1
 vpython:S116±"RRename this field "checkBox_4" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÏÕ›ÿÿÿÿÿ8®Ð·Þµ1
+vpython:S116®"RRename this field "checkBox_3" to match the regular expression ^[_a-z][_a-z0-9]*$.(æÖ´ëþÿÿÿÿ8¯Ð·Þµ1
+{python:S116˜"WRename this field "doubleSpinBox_4" to match the regular expression ^[_a-z][_a-z0-9]*$.(´˜¬©üÿÿÿÿ8®Ð·Þµ1
+~python:S116˜"ZRename this field "horizontalSlider_8" to match the regular expression ^[_a-z][_a-z0-9]*$.(ðâæÜÿÿÿÿÿ8­Ð·Þµ1
 ~python:S116Â"ZRename this field "horizontalSlider_2" to match the regular expression ^[_a-z][_a-z0-9]*$.(«¬ñ‡ùÿÿÿÿ8®Ð·Þµ1
-ypython:S116"URename this field "doubleSpinBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÑÇ”Àûÿÿÿÿ8®Ð·Þµ1
-upython:S116["RRename this field "comboBox_4" to match the regular expression ^[_a-z][_a-z0-9]*$.(ôÙœûÿÿÿÿ8­Ð·Þµ1
+vpython:S116¤"RRename this field "checkBox_5" to match the regular expression ^[_a-z][_a-z0-9]*$.(³Ð¹°ÿÿÿÿÿ8®Ð·Þµ1
+ypython:S116Ì"ZRename this field "horizontalSlider_3" to match the regular expression ^[_a-z][_a-z0-9]*$.(Ð¶‡¸8¯Ð·Þµ1
+~python:S116à"ZRename this field "horizontalSlider_5" to match the regular expression ^[_a-z][_a-z0-9]*$.(úôö˜ùÿÿÿÿ8­Ð·Þµ1
+~python:S116ê"ZRename this field "horizontalSlider_6" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÔÞìÉþÿÿÿÿ8®Ð·Þµ1
+{python:S116•"WRename this field "doubleSpinBox_3" to match the regular expression ^[_a-z][_a-z0-9]*$.(ËäÕõùÿÿÿÿ8®Ð·Þµ1
+upython:S116J"WRename this field "count_k_spinBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(‚©ð8®Ð·Þµ1
+~python:S116¥"ZRename this field "horizontalSlider_9" to match the regular expression ^[_a-z][_a-z0-9]*$.(ï‚­Ïÿÿÿÿÿ8®Ð·Þµ1
 ppython:S116«"RRename this field "checkBox_2" to match the regular expression ^[_a-z][_a-z0-9]*$.(ëã‡8®Ð·Þµ1
+|python:S116¸"XRename this field "horizontalSlider" to match the regular expression ^[_a-z][_a-z0-9]*$.(öÄ¶ƒÿÿÿÿÿ8¯Ð·Þµ1
+{python:S116‘"WRename this field "doubleSpinBox_2" to match the regular expression ^[_a-z][_a-z0-9]*$.(µ»°Òøÿÿÿÿ8®Ð·Þµ1
+ypython:S116§"URename this field "checkBox_norm" to match the regular expression ^[_a-z][_a-z0-9]*$.(Æí²Îÿÿÿÿÿ8®Ð·Þµ1
+ppython:S116T"RRename this field "comboBox_3" to match the regular expression ^[_a-z][_a-z0-9]*$.(–øÊ 8®Ð·Þµ1
+ypython:S116"URename this field "doubleSpinBox" to match the regular expression ^[_a-z][_a-z0-9]*$.(ÑÇ”Àûÿÿÿÿ8®Ð·Þµ1
+ypython:S116Ö"ZRename this field "horizontalSlider_4" to match the regular expression ^[_a-z][_a-z0-9]*$.(Òº¼Ó8®Ð·Þµ1
+upython:S116["RRename this field "comboBox_4" to match the regular expression ^[_a-z][_a-z0-9]*$.(ôÙœûÿÿÿÿ8­Ð·Þµ1
+rpython:S1165"TRename this field "graphicsView" to match the regular expression ^[_a-z][_a-z0-9]*$.(ýÉ8®Ð·Þµ1
+{python:S116/"XRename this field "Load_data_button" to match the regular expression ^[_a-z][_a-z0-9]*$.(ŽÙ°Ûùÿÿÿÿ8®Ð·Þµ1
+~python:S116‹"ZRename this field "horizontalSlider_7" to match the regular expression ^[_a-z][_a-z0-9]*$.(ôŸÏ’þÿÿÿÿ8®Ð·Þµ1
 Špython:S101"gRename class "Ui_MainWindow" to match the regular expression ^_?([A-Z_][a-zA-Z0-9]*|[a-z_][a-z0-9_]*)$.( Ìñýùÿÿÿÿ8¯Ð·Þµ1
 ypython:S117"VRename this parameter "MainWindow" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÂéÇ´ÿÿÿÿÿ8¯Ð·Þµ1
 npython:S100"KRename method "setupUi" to match the regular expression ^[a-z_][a-z0-9_]*$.(ÂéÇ´ÿÿÿÿÿ8¯Ð·Þµ1
@@ -53,8 +53,8 @@ upython:S117Ô"WRename this local variable "X_test" to match the regular expr
 vpython:S117Ô"XRename this local variable "X_train" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÄÙ¸.8°Ð·Þµ1
 upython:S117ò"WRename this local variable "X_test" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÄÙ¸.8°Ð·Þµ1
 vpython:S117ò"XRename this local variable "X_train" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÄÙ¸.8°Ð·Þµ1
-Opython:S1481ò"0Replace unused local variable "y_test" with "_".(ÄÙ¸.8°Ð·Þµ1
 Opython:S1481ò"0Replace unused local variable "X_test" with "_".(ÄÙ¸.8°Ð·Þµ1
+Opython:S1481ò"0Replace unused local variable "y_test" with "_".(ÄÙ¸.8°Ð·Þµ1
 upython:S117¥"WRename this local variable "X_test" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÄÙ¸.8°Ð·Þµ1
 vpython:S117¥"XRename this local variable "X_train" to match the regular expression ^[_a-z][a-z0-9_]*$.(ÄÙ¸.8°Ð·Þµ1
 tpython:S3776š"TRefactor this function to reduce its Cognitive Complexity from 19 to the 15 allowed.(ÞÕÀë8±Ð·Þµ1
