@@ -563,7 +563,7 @@ class Ui_MainWindow(object):
         df_dop = pd.read_csv(file_path, sep=",")
 
         model = self.fit_our_model()
-        df_dop["Kind"] = model.predict(df_dop.values, 1)
+        df_dop["Kind"] = model.predict(df_dop.values, 1, False)
         df_dop['Kind'] = df_dop['Kind'].astype(str).replace(self.code_FULLname_dict)
 
         self.mod_df_dop = df_dop
@@ -828,7 +828,7 @@ class Ui_MainWindow(object):
                 custom_knn = CustomKNN(key)
                 custom_knn.fit(X_train, y_train, weights_tmp)
 
-                y_pred = custom_knn.predict(X_test, choice_metric_param)
+                y_pred = custom_knn.predict(X_test, choice_metric_param, False)
                 count = 0
                 for i in range(len(y_pred)):
                     if y_pred[i] == y_test[i]:

@@ -1,10 +1,4 @@
 import numpy as np
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.ensemble import VotingClassifier
-from sklearn.linear_model import LogisticRegression
-from sklearn.naive_bayes import GaussianNB
-from sklearn.svm import SVC
-from sklearn.tree import DecisionTreeClassifier
 
 
 class CustomKNN:
@@ -36,7 +30,6 @@ class CustomKNN:
         max_difference = 0
         for coord1, coord2, weight in zip(point1, point2, self.weights):
             difference = abs(coord1 - coord2) * weight
-
             if difference > max_difference:
                 max_difference = difference
 
@@ -58,11 +51,11 @@ class CustomKNN:
         else:
             return 1 - (dot_product / (magnitude1 * magnitude2))
 
-    def predict(self, X, metrics):
-        y_pred = [self._predict(x, metrics) for x in X]
+    def predict(self, X, metrics, voices: bool):
+        y_pred = [self._predict(x, metrics, voices) for x in X]
         return np.array(y_pred)
 
-    def _predict(self, x, metrics):
+    def _predict(self, x, metrics, voices: bool):
         match metrics:
             case 1:
                 distances = [self.euclidean_distance(x, x_train) for x_train in self.X_train]
@@ -75,9 +68,14 @@ class CustomKNN:
             case _:
                 distances = [self.euclidean_distance(x, x_train) for x_train in self.X_train]
 
-        k_indices = np.argsort(distances)[:self.k]
+        k_distances = np.argsort(distances)[:self.k]
 
-        k_nearest_labels = [self.y_train[i] for i in k_indices]
+        k_nearest_labels = [self.y_train[i] for i in k_distances]
 
-        most_common = np.bincount(k_nearest_labels).argmax()
+        if voices:
+            dictionary = {label: (100 / distance) for label, distance in zip(k_nearest_labels, k_distances)}
+            most_common = max(dictionary, key=dictionary.get)
+        else:
+            most_common = np.bincount(k_nearest_labels).argmax()
+
         return most_common
