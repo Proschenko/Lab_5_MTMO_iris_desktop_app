@@ -9,7 +9,6 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
-from tabulate import tabulate
 
 from sklearn.model_selection import train_test_split
 
@@ -693,19 +692,19 @@ class Ui_MainWindow(object):
                 output_str += "\nLogisticRegression"
             if self.checkBox_2.isChecked():
                 models_arr.append(('model2', DecisionTreeClassifier()))
-                my_weights.append(self.horizontalSlider.value())
+                my_weights.append(self.horizontalSlider_2.value())
                 output_str += "\nDecisionTreeClassifier"
             if self.checkBox_3.isChecked():
                 models_arr.append(('model3', RandomForestClassifier()))
-                my_weights.append(self.horizontalSlider.value())
+                my_weights.append(self.horizontalSlider_3.value())
                 output_str += "\nRandomForestClassifier"
             if self.checkBox_4.isChecked():
                 models_arr.append(('model4', SVC(probability=True)))
-                my_weights.append(self.horizontalSlider.value())
+                my_weights.append(self.horizontalSlider_4.value())
                 output_str += "\nSVC"
             if self.checkBox_5.isChecked():
                 models_arr.append(('model5', GaussianNB()))
-                my_weights.append(self.horizontalSlider.value())
+                my_weights.append(self.horizontalSlider_5.value())
                 output_str += "\nGaussianNB"
 
             # Получаем данные и делаем выборки
@@ -719,6 +718,7 @@ class Ui_MainWindow(object):
             scaler = StandardScaler()
             if self.checkBox_norm.isChecked():
                 output_str += "\nДанные нормализованы"
+                scaler.fit(X)
                 X = scaler.transform(X)
 
             X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
@@ -746,9 +746,10 @@ class Ui_MainWindow(object):
         y = y.flatten()
 
         # Нормализируем если нужно
-        # scaler = StandardScaler()
-        # if self.checkBox_3.isChecked():
-        #     X = scaler.transform(X)
+        scaler = StandardScaler()
+        if self.checkBox_3.isChecked():
+            scaler.fit(X)
+            X = scaler.transform(X)
 
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 

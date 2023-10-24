@@ -36,6 +36,7 @@ class CustomKNN:
         max_difference = 0
         for coord1, coord2, weight in zip(point1, point2, self.weights):
             difference = abs(coord1 - coord2) * weight
+
             if difference > max_difference:
                 max_difference = difference
 
