@@ -73,8 +73,17 @@ class CustomKNN:
         k_nearest_labels = [self.y_train[i] for i in k_distances]
 
         if voices:
-            dictionary = {label: (100 / distance) for label, distance in zip(k_nearest_labels, k_distances)}
-            most_common = max(dictionary, key=dictionary.get)
+            dictionary = [(label, 100 / distance) for label, distance in zip(k_nearest_labels, k_distances)]
+            # print(dictionary)
+            resulgitпшеt_dictionary = {}
+            for key, value in dictionary:
+                if key in result_dictionary:
+                    result_dictionary[key] += value
+                else:
+                    result_dictionary[key] = value
+            # print(result_dictionary)
+            most_common = max(result_dictionary, key=result_dictionary.get)
+
         else:
             most_common = np.bincount(k_nearest_labels).argmax()
 
