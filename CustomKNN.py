@@ -47,7 +47,7 @@ class CustomKNN:
         magnitude2 = np.sqrt(np.sum(weighted_vector2 ** 2))
 
         if magnitude1 == 0 or magnitude2 == 0:
-            return 1  # Избегаем деления на ноль
+            return 0  # Избегаем деления на ноль
         else:
             return 1 - (dot_product / (magnitude1 * magnitude2))
 
