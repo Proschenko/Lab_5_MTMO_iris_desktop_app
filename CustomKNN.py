@@ -75,7 +75,7 @@ class CustomKNN:
         if voices:
             dictionary = [(label, 100 / distance) for label, distance in zip(k_nearest_labels, k_distances)]
             # print(dictionary)
-            resulgitпшеt_dictionary = {}
+            result_dictionary = {}
             for key, value in dictionary:
                 if key in result_dictionary:
                     result_dictionary[key] += value

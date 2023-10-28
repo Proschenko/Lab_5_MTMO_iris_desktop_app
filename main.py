@@ -1,21 +1,18 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QMessageBox
+import time
 
-import pandas as pd
 import numpy as np
+import pandas as pd
+from PyQt5 import QtCore, QtWidgets
+from PyQt5.QtWidgets import QMessageBox
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
+from matplotlib.figure import Figure
 from sklearn.ensemble import RandomForestClassifier, VotingClassifier
 from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
-
-from sklearn.model_selection import train_test_split
-
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-from matplotlib.figure import Figure
-
-import time
 
 
 class MatplotlibCanvas(FigureCanvas):
@@ -29,7 +26,7 @@ class MatplotlibCanvas(FigureCanvas):
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        #region setup
+        # region setup
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1687, 782)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -377,14 +374,14 @@ class Ui_MainWindow(object):
         self.predict_button.clicked.connect(self.predict_button_click)
         self.opt_k_button.clicked.connect(self.opt_k_button_click)
 
-        #checkboxes
+        # checkboxes
         self.checkBox_1.stateChanged.connect(self.checkBox_1_state_changed)
         self.checkBox_2.stateChanged.connect(self.checkBox_2_state_changed)
         self.checkBox_3.stateChanged.connect(self.checkBox_3_state_changed)
         self.checkBox_4.stateChanged.connect(self.checkBox_4_state_changed)
         self.checkBox_5.stateChanged.connect(self.checkBox_5_state_changed)
 
-        #horizontal
+        # horizontal
         self.horizontalSlider.valueChanged.connect(self.horizontalSlider_1_value_changed)
         self.horizontalSlider_2.valueChanged.connect(self.horizontalSlider_2_value_changed)
         self.horizontalSlider_3.valueChanged.connect(self.horizontalSlider_3_value_changed)
@@ -490,28 +487,30 @@ class Ui_MainWindow(object):
     code_name_dict = {'0': "Setosa", '1': "Versicolor", '2': "Virginica"}
     code_FULLname_dict = {'0': "Iris-Setosa", '1': "Iris-Versicolor", '2': "Iris-Virginica"}
 
-    #region simple functions
+    # region simple functions
     def checkBox_1_state_changed(self):
         self.horizontalSlider.setEnabled(self.checkBox_1.isChecked())
-        self.label_value_interp_1.setText( str(self.horizontalSlider.value()) if self.checkBox_1.isChecked() else "None")
+        self.label_value_interp_1.setText(str(self.horizontalSlider.value()) if self.checkBox_1.isChecked() else "None")
 
     def checkBox_2_state_changed(self):
         self.horizontalSlider_2.setEnabled(self.checkBox_2.isChecked())
-        self.label_value_interp_2.setText( str(self.horizontalSlider_2.value()) if self.checkBox_2.isChecked() else "None")
+        self.label_value_interp_2.setText(
+            str(self.horizontalSlider_2.value()) if self.checkBox_2.isChecked() else "None")
 
     def checkBox_3_state_changed(self):
         self.horizontalSlider_3.setEnabled(self.checkBox_3.isChecked())
-        self.label_value_interp_3.setText( str(self.horizontalSlider_3.value()) if self.checkBox_3.isChecked() else "None")
+        self.label_value_interp_3.setText(
+            str(self.horizontalSlider_3.value()) if self.checkBox_3.isChecked() else "None")
 
     def checkBox_4_state_changed(self):
         self.horizontalSlider_4.setEnabled(self.checkBox_4.isChecked())
-        self.label_value_interp_4.setText( str(self.horizontalSlider_4.value()) if self.checkBox_4.isChecked() else "None")
+        self.label_value_interp_4.setText(
+            str(self.horizontalSlider_4.value()) if self.checkBox_4.isChecked() else "None")
 
     def checkBox_5_state_changed(self):
         self.horizontalSlider_5.setEnabled(self.checkBox_5.isChecked())
-        self.label_value_interp_5.setText( str(self.horizontalSlider_5.value()) if self.checkBox_5.isChecked() else "None")
-
-
+        self.label_value_interp_5.setText(
+            str(self.horizontalSlider_5.value()) if self.checkBox_5.isChecked() else "None")
 
     def horizontalSlider_1_value_changed(self):
         self.label_value_interp_1.setText(str(self.horizontalSlider.value()))
@@ -524,14 +523,19 @@ class Ui_MainWindow(object):
 
     def horizontalSlider_4_value_changed(self):
         self.label_value_interp_4.setText(str(self.horizontalSlider_4.value()))
+
     def horizontalSlider_5_value_changed(self):
         self.label_value_interp_5.setText(str(self.horizontalSlider_5.value()))
+
     def horizontalSlider_6_value_changed(self):
         self.label_value_interp_6.setText(str(self.horizontalSlider_6.value()))
+
     def horizontalSlider_7_value_changed(self):
         self.label_value_interp_7.setText(str(self.horizontalSlider_7.value()))
+
     def horizontalSlider_8_value_changed(self):
         self.label_value_interp_8.setText(str(self.horizontalSlider_8.value()))
+
     def horizontalSlider_9_value_changed(self):
         self.label_value_interp_9.setText(str(self.horizontalSlider_9.value()))
 
@@ -556,7 +560,8 @@ class Ui_MainWindow(object):
                 output_str_tmp = "Убедитесь что вы поставили правильные настройки:\n"
                 model1 = self.fit_our_model()
                 df_dop = self.clear_df_dop.copy()
-                df_dop["Kind"] = model1.predict(df_dop.values, 1, self.checkBox_golos.isChecked())
+                df_dop["Kind"] = model1.predict(df_dop.values, self.metric_combobox.currentIndex(),
+                                                self.checkBox_golos.isChecked())
                 df_dop['Kind'] = df_dop['Kind'].astype(str).replace(self.code_FULLname_dict)
                 self.mod_df_dop = df_dop
                 output_str_tmp += df_dop.to_string()
@@ -664,7 +669,7 @@ class Ui_MainWindow(object):
                       self.doubleSpinBox_4.value()]]
 
             model = self.fit_our_model()
-            prediction = model.predict(new_X, 1)
+            prediction = model.predict(new_X, self.metric_combobox.currentIndex(), self.checkBox_golos.isChecked())
 
             type_iris = f"Iris-{self.code_name_dict[str(prediction[0])]}"
 
@@ -779,7 +784,7 @@ class Ui_MainWindow(object):
 
     def plot_k_drawing(self, k_history_inner, accuracy_history):
         # Получение объекта Axes
-        ax =self.matplotlib_canvas.fig.add_subplot(111)
+        ax = self.matplotlib_canvas.fig.add_subplot(111)
 
         title_text = "График зависимости на основе метрики: "
         choice_metric_param = self.metric_combobox.currentIndex() + 1
@@ -800,7 +805,6 @@ class Ui_MainWindow(object):
         ax.set_xlabel('Количество соседей')
         ax.set_ylabel('Точность')
 
-
     def opt_k_button_click(self):
         if self.clear_df_iris.empty:
             self.show_popup_critical("Ошибка", "Загрузите данные прежде чем нажать на кнопку")
@@ -815,15 +819,15 @@ class Ui_MainWindow(object):
             X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
             output_log = "Выбранная метрика:"
-            choice_metric_param =self.metric_combobox.currentIndex()+1
-            if choice_metric_param==1:
-                output_log +="\nЕвклидова\n"
-            elif choice_metric_param==2:
-                output_log +="\nХемминга\n"
-            elif choice_metric_param==3:
-                output_log +="\nЧебышева\n"
-            elif choice_metric_param==4:
-                output_log +="\nКосинусная\n"
+            choice_metric_param = self.metric_combobox.currentIndex() + 1
+            if choice_metric_param == 1:
+                output_log += "\nЕвклидова\n"
+            elif choice_metric_param == 2:
+                output_log += "\nХемминга\n"
+            elif choice_metric_param == 3:
+                output_log += "\nЧебышева\n"
+            elif choice_metric_param == 4:
+                output_log += "\nКосинусная\n"
             maxim_value = 0
 
             weights_tmp = np.array([
@@ -832,8 +836,8 @@ class Ui_MainWindow(object):
                 self.horizontalSlider_8.value(),
                 self.horizontalSlider_9.value()
             ])
-            accuracy_history=[]
-            k_history =[]
+            accuracy_history = []
+            k_history = []
             for key in range(1, 150):
                 custom_knn = CustomKNN(key)
                 custom_knn.fit(X_train, y_train, weights_tmp)
@@ -852,7 +856,6 @@ class Ui_MainWindow(object):
                     maxim_value = tmp_value
                     best_k = key
 
-
             messagebox_log = f"Самый оптимальный k={best_k}, с точностью {maxim_value}"
             output_log += messagebox_log
             self.main_textedit.setText(output_log)
@@ -862,7 +865,7 @@ class Ui_MainWindow(object):
             self.matplotlib_canvas.fig.clear()
 
             # Вызов вашей функции для построения графика
-            self.plot_k_drawing(k_history,accuracy_history)
+            self.plot_k_drawing(k_history, accuracy_history)
             # Обновление виджета с новым графиком
             self.matplotlib_canvas.draw()
 
@@ -903,8 +906,6 @@ class Ui_MainWindow(object):
 
 
 if __name__ == "__main__":
-    import matplotlib.pyplot as plt
-
     import sys
     from CustomKNN import CustomKNN
 
