@@ -13,6 +13,7 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.metrics import accuracy_score
 
 
 class MatplotlibCanvas(FigureCanvas):
@@ -58,7 +59,7 @@ class Ui_MainWindow(object):
         self.data_choice_combobox.setGeometry(QtCore.QRect(470, 130, 311, 41))
         self.data_choice_combobox.setObjectName("data_choice_combobox")
         self.data_choice_combobox.addItem("")
-
+        self.data_choice_combobox.addItem("")
         self.data_choice_combobox.addItem("")
         self.data_choice_combobox.addItem("")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
@@ -431,10 +432,10 @@ class Ui_MainWindow(object):
         self.enter_console_button.setText(_translate("MainWindow", "Вывести данные ниже"))
         self.label.setText(_translate("MainWindow", "Окно визуализации"))
         self.data_choice_combobox.setItemText(0, _translate("MainWindow", "Исходный iris.csv"))
-        # self.data_choice_combobox.setItemText(1, _translate("MainWindow", "Заполненный dop.csv"))
         self.data_choice_combobox.setItemText(1, _translate("MainWindow", "Ансамбль классификаторов для iris.csv"))
         self.data_choice_combobox.setItemText(2, _translate("MainWindow",
                                                             "Использовать настройки приложения для dop.csv"))
+        self.data_choice_combobox.setItemText(3, _translate("MainWindow", "Тест на данных самой выборки"))
 
         self.label_2.setText(_translate("MainWindow", "Выбор метрики"))
         self.label_3.setText(_translate("MainWindow", "-------->"))
@@ -557,7 +558,7 @@ class Ui_MainWindow(object):
 
                     self.main_textedit.setText(some_str)
             case "Использовать настройки приложения для dop.csv":
-                output_str_tmp = "Убедитесь что вы поставили правильные настройки:\n"
+                output_str_tmp = "Убедитесь что вы поставили правильные настройки:\n Евклидова Метрика\n "
                 model1 = self.fit_our_model()
                 df_dop = self.clear_df_dop.copy()
                 df_dop["Kind"] = model1.predict(df_dop.values, self.metric_combobox.currentIndex(),
@@ -566,6 +567,14 @@ class Ui_MainWindow(object):
                 self.mod_df_dop = df_dop
                 output_str_tmp += df_dop.to_string()
                 self.main_textedit.setText(output_str_tmp)
+            case "Тест на данных самой выборки":
+                accuracy, data_frame_3_task = self.fit_our_model_for_task_3_in_lab()
+
+                output_text_tmp = f"Протестированный классификатор на данных самой выборки\nВыбранная метрика: {self.metric_combobox.currentText()}\nТочность равнa: {accuracy}\nКоличество соседей:  {self.count_k_spinBox.value()}\nДатасет:\n"
+                output_text_tmp += "\n\n\n"
+                output_text_tmp += data_frame_3_task.to_string()
+
+                self.main_textedit.setText(output_text_tmp)
             case _:
                 self.show_popup_critical("Ошибка с файлом")
 
@@ -781,6 +790,61 @@ class Ui_MainWindow(object):
         custom_knn.fit(X_train, y_train, weights)
 
         return custom_knn
+
+    def fit_our_model_for_task_3_in_lab(self):
+        mod_df_iris_copy_plus_pred = self.mod_df_iris.copy()
+
+        count = 0
+        n = len(self.mod_df_iris)  # Общее количество объектов в наборе данных
+        y_true = []  # Здесь будем хранить фактические метки
+        y_pred = []  # Здесь будем хранить предсказанные метки
+
+        for i in range(n):
+            X = self.mod_df_iris.iloc[:, :4].copy()
+            y = self.mod_df_iris.iloc[:, 5].copy()
+
+            # Исключаем i-ый элемент из данных для теста
+            X_test = np.array(X.iloc[i, :]).reshape(1, -1)
+            y_test = np.array(y.iloc[i]).flatten()
+            X_train = X.drop(i, axis=0)
+            y_train = y.drop(i, axis=0)
+
+            X_train = np.array(X_train)
+            y_train = np.array(y_train)
+            y_train = y_train.flatten()
+
+            scaler = StandardScaler()
+            if self.checkBox_3.isChecked():
+                scaler.fit(X_train)
+                X_train = scaler.transform(X_train)
+                X_test = scaler.transform(X_test)
+
+            weights = np.array([
+                self.horizontalSlider_6.value(),
+                self.horizontalSlider_7.value(),
+                self.horizontalSlider_8.value(),
+                self.horizontalSlider_9.value()
+            ])
+
+            count_k = self.count_k_spinBox.value()
+
+            custom_knn = CustomKNN(count_k)
+            custom_knn.fit(X_train, y_train, weights)
+
+            choice_metric_param = self.metric_combobox.currentIndex() + 1
+
+            y_pred_i = custom_knn.predict(X_test, choice_metric_param, self.checkBox_golos.isChecked())
+            y_true.append(y_test)
+            y_pred.append(y_pred_i)
+
+            if np.array_equal(y_pred_i, y_test):
+                count += 1
+
+        # Добавляем столбец y_pred к копии mod_df_iris
+        mod_df_iris_copy_plus_pred['predicted'] = y_pred
+
+        accuracy = self.calculate_accuracy(y_true, y_pred)
+        return accuracy, mod_df_iris_copy_plus_pred
 
     def plot_k_drawing(self, k_history_inner, accuracy_history):
         # Получение объекта Axes
